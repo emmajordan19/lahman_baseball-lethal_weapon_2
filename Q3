@@ -22,3 +22,5 @@ FROM collegeplaying AS cp
 	ON cp.schoolid = c.schoolid
 	INNER JOIN 
 	
+	
+-- test

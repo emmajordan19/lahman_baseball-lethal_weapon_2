@@ -16,11 +16,14 @@ FROM salaries
 SELECT *
 FROM collegeplaying
 
-SELECT namefirst, namelast, schoolname, salary
-FROM collegeplaying AS cp
+SELECT DISTINCT(CONCAT(namefirst, ' ' ,namelast)) as name, schoolname, SUM(salary::numeric::money) AS salary
+FROM people AS p
+	INNER JOIN salaries AS s
+	ON p.playerid = s.playerid
+	INNER JOIN collegeplaying AS cp
+	ON s.playerid = cp.playerid
 	INNER JOIN schools AS c
 	ON cp.schoolid = c.schoolid
-	INNER JOIN 
-	
-	
--- test
+WHERE schoolname LIKE '%Vanderbilt%'
+GROUP BY name, schoolname
+ORDER BY salary DESC;	

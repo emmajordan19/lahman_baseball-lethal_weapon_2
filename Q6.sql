@@ -21,4 +21,5 @@ WHERE yearid = 2016 AND (sb + cs) > 20
 ORDER BY successful_stolen_base_percentage desc
 LIMIT 1;
 
-/*Chris tried stealng 23 times and was successful 21 times*/
+/*Chris tried stealng 23 times and was successful 21 times as per website
+https://www.baseball-reference.com/players/o/owingch01.shtml*/

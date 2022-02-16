@@ -21,7 +21,6 @@ SELECT team, park_name, year, games, attendance / games as average_attendance
 FROM homegames as h
 		INNER JOIN parks as p
 		ON h.park = p.park
-		INNER JOIN
 WHERE year = 2016
       and games >= 10 
 ORDER BY average_attendance DESC

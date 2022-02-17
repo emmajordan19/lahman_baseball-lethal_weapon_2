@@ -1,0 +1,29 @@
+-- Q3 3. Find all players in the database who played at Vanderbilt University.
+-- Create a list showing each player’s first and last names as well as
+-- the total salary they earned in the major leagues. Sort this list in 
+-- descending order by the total salary earned.
+-- Which Vanderbilt player earned the most money in the majors? 
+
+SELECT *
+FROM schools
+
+SELECT *
+FROM people
+
+SELECT *
+FROM salaries
+
+SELECT *
+FROM collegeplaying
+
+SELECT DISTINCT(CONCAT(namefirst, ' ' ,namelast)) as name, schoolname, SUM(salary::numeric::money) AS salary
+FROM people AS p
+	INNER JOIN salaries AS s
+	ON p.playerid = s.playerid
+	INNER JOIN collegeplaying AS cp
+	ON s.playerid = cp.playerid
+	INNER JOIN schools AS c
+	ON cp.schoolid = c.schoolid
+WHERE schoolname LIKE '%Vanderbilt%'
+GROUP BY name, schoolname
+ORDER BY salary DESC;	

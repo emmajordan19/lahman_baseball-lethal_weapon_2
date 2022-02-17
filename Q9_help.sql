@@ -23,3 +23,20 @@ CASE WHEN am.lgid = 'AL' THEN 'american league' END AS AL
 FROM awardsmanagers AS am JOIN people AS ppl ON am.playerid = ppl.playerid
 WHERE awardid ILIKE '%TSN%' AND am.lgid ILIKE 'NL' AND am.lgid ILIKE 'AL'
 ORDER BY namelast
+
+
+SELECT people.namefirst,
+	   people.namelast
+FROM people INNER JOIN awardsmanagers
+     ON awardsmanagers.playerid = people.playerid
+	 INNER JOIN
+WHERE people.playerid IN 
+(SELECT DISTINCT playerid
+FROM awardsmanagers
+WHERE awardid ILIKE '%TSN%'
+AND lgid ILIKE '%al%'
+INTERSECT
+SELECT DISTINCT playerid
+FROM awardsmanagers
+WHERE awardid ILIKE '%TSN%'
+AND lgid ILIKE '%nl%');

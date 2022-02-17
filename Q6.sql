@@ -10,7 +10,7 @@ FROM batting
 LEFT JOIN people
 USING(playerid)
 WHERE yearid = 2016 AND (sb + cs) > 20
-ORDER BY successful_stolen_base_percentage DESC;
+ORDER BY successful_stolen_base_percentage DESC
 LIMIT 5;
 
 SELECT namefirst, namelast, (sb::numeric / (sb::numeric + cs::numeric)) AS successful_stolen_base_percentage
